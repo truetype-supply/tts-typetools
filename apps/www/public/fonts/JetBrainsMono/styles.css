@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "Jet Brains Mono";
+  font-display: swap;
+  src: url("/fonts/JetBrainsMono/JetBrainsMono-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 800;
+}
+@font-face {
+  font-family: "Jet Brains Mono Italic";
+  font-display: swap;
+  src: url("/fonts/JetBrainsMono/JetBrainsMono-Italic-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 800;
+}

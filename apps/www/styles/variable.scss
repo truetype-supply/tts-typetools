@@ -1,0 +1,181 @@
+@import "./media.scss";
+$SHADOW_BUTTON: 0rem 0.35rem 0.5rem -0.6rem;
+
+:root {
+    --HEADER-HEIGHT: 2.5rem;
+    --FOOTER-HEIGHT: 1.75rem;
+
+    --grid-gap: 0.25rem;
+
+    --font-netica: "Netica", sans-serif;
+    --font-monospace: "JetBrains Mono", monospace;
+    // --text-small: 0.75rem;
+    --text-small: 12px;
+    --text-normal: 1rem;
+
+    --trans-bezier: 300ms cubic-bezier(1, 0, 0, 1);
+
+    --geist-padding: 0rem 6rem;
+    // --HEADER-HEIGHT: 50vh;
+    --A1: #ffffff;
+    --A2: #eeeeee;
+    --A3: #dddddd;
+    --A4: #cccccc;
+    --A5: #bbbbbb;
+    --A6: #aaaaaa;
+    --A7: #999999;
+    --A8: #888888;
+    --A9: #777777;
+    --A10: #666666;
+    --A11: #555555;
+    --A12: #444444;
+    --A13: #333333;
+    --A14: #222222;
+    --A15: #111111;
+    --A16: #000000;
+
+    --geist-meera: #8fbc8f;
+    --geist-pp-color: #8fbc8f;
+    --accents-1: var(--A1);
+    --accents-2: var(--A2);
+    --accents-3: var(--A3);
+    --accents-4: var(--A4);
+    --accents-5: var(--A5);
+    --accents-6: var(--A6);
+    --accents-7: var(--A7);
+    --accents-8: var(--A8);
+    --accents-9: var(--A9);
+    --accents-10: var(--A10);
+    --accents-11: var(--A11);
+    --accents-12: var(--A12);
+    --accents-13: var(--A13);
+    --accents-14: var(--A14);
+    --accents-15: var(--A15);
+    --accents-16: var(--A16);
+
+    --blur-bg: rgb(225 225 225 / 27.5%);
+    --aside-width: 18rem;
+    --aside-shadow: inset -0.5rem 0 1rem -1rem var(--accents-10);
+    --aside-backround: var(--accents-3);
+    --shadow-sticky: 0 0.5rem 1rem -1rem var(--A10);
+    --shadow-inset: inset 0 -0.5rem 1rem -1rem var(--A10);
+    --shadow-button: #{$SHADOW_BUTTON} var(--A10);
+    --shadow-solid-small: 0.25rem 0.25rem 0 0 var(--A2);
+    --geist-bezier-transition: 300ms cubic-bezier(1, 0, 0, 1);
+
+    --header-height: var(--HEADER-HEIGHT);
+    --footer-height: var(--FOOTER-HEIGHT);
+    --button-height: var(--FOOTER-HEIGHT);
+    --button-small: 1.5rem;
+    --button-medium: 2rem;
+    --button-large: 2.5rem;
+    --tab-header-height: 44px;
+
+    --main-menu-width: 16rem;
+    --main-menu-height: 400px;
+
+    @include media("screen", ">sMonitor", "<mMonitor") {
+        --geist-padding: 0 3rem;
+        // --aside-width: 16rem;
+    }
+    @include media("screen", ">tablet", "<sMonitor") {
+        --geist-padding: 0 2rem;
+        // --aside-width: 16rem;
+    }
+    @include media("screen", "<tablet") {
+        --HEADER-HEIGHT: 60px;
+        --geist-padding: 0 1rem;
+        // --aside-width: 100vw;
+    }
+
+    @include media("screen", ">tablet") {
+        &[data-aside="true"] {
+            --aside-width: 18rem;
+        }
+        &[data-aside="false"] {
+            --aside-width: 5rem;
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --accents-1: var(--A16);
+        --accents-2: var(--A15);
+        --accents-3: var(--A14);
+        --accents-4: var(--A13);
+        --accents-5: var(--A12);
+        --accents-6: var(--A11);
+        --accents-7: var(--A10);
+        --accents-8: var(--A9);
+        --accents-9: var(--A8);
+        --accents-10: var(--A7);
+        --accents-11: var(--A6);
+        --accents-12: var(--A5);
+        --accents-13: var(--A4);
+        --accents-14: var(--A3);
+        --accents-15: var(--A2);
+        --accents-16: var(--A1);
+
+        --geist-pp-color: #00ff7f;
+
+        --shadow-sticky: 0 0.5rem 1rem -1rem var(--A16);
+        --shadow-inset: inset 0 -0.5rem 1rem 0rem var(--A16);
+        --shadow-button: #{$SHADOW_BUTTON} var(--A16);
+        --shadow-solid-small: 0.25rem 0.25rem 0 0 var(--A16);
+        --blur-bg: rgb(10 10 10 / 27.5%);
+    }
+}
+
+[data-theme="light"] {
+    --accents-1: var(--A1);
+    --accents-2: var(--A2);
+    --accents-3: var(--A3);
+    --accents-4: var(--A4);
+    --accents-5: var(--A5);
+    --accents-6: var(--A6);
+    --accents-7: var(--A7);
+    --accents-8: var(--A8);
+    --accents-9: var(--A9);
+    --accents-10: var(--A10);
+    --accents-11: var(--A11);
+    --accents-12: var(--A12);
+    --accents-13: var(--A13);
+    --accents-14: var(--A14);
+    --accents-15: var(--A15);
+    --accents-16: var(--A16);
+
+    --geist-pp-color: #8fbc8f;
+
+    --shadow-sticky: 0 0.5rem 1rem -1rem var(--A10);
+    --shadow-inset: inset 0 -0.5rem 1rem -1.25rem var(--A10);
+    --shadow-button: #{$SHADOW_BUTTON} var(--A10);
+    --blur-bg: rgb(225 225 225 / 27.5%);
+}
+
+[data-theme="dark"] {
+    --accents-1: var(--A16);
+    --accents-2: var(--A15);
+    --accents-3: var(--A14);
+    --accents-4: var(--A13);
+    --accents-5: var(--A12);
+    --accents-6: var(--A11);
+    --accents-7: var(--A10);
+    --accents-8: var(--A9);
+    --accents-9: var(--A8);
+    --accents-10: var(--A7);
+    --accents-11: var(--A6);
+    --accents-12: var(--A5);
+    --accents-13: var(--A4);
+    --accents-14: var(--A3);
+    --accents-15: var(--A2);
+    --accents-16: var(--A1);
+
+    --geist-pp-color: #00ff7f;
+
+    --shadow-sticky: 0 0.5rem 1rem -1rem var(--A16);
+    --shadow-inset: inset 0 -0.5rem 1rem 0rem var(--A16);
+    --shadow-button: #{$SHADOW_BUTTON} var(--A16);
+    --shadow-solid-small: 0.25rem 0.25rem 0 0 var(--A16);
+    --blur-bg: rgb(10 10 10 / 27.5%);
+}

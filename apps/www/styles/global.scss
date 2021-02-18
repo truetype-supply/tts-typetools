@@ -1,0 +1,50 @@
+@import "variable.scss";
+@import "media.scss";
+
+:root {
+    &[data-resize] * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+
+    // font-family: "Helvetica Neue", sans-serif;
+    font-family: "Jet Brains Mono", monospace;
+
+    background-color: var(--aside-backround);
+    // background-color: var(--accents-3);
+    color: var(--accents-14);
+
+    overscroll-behavior: auto none;
+}
+
+a {
+    color: currentColor;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        text-decoration-thickness: 2px;
+        text-underline-offset: 0.1rem;
+    }
+}
+
+#__next {
+    @include media("screen", ">sMonitor") {
+        display: grid;
+        grid-template-columns: max-content 1fr;
+        gap: var(--grid-gap);
+    }
+}
+
+aside {
+    border-right: 1px solid var(--accents-4);
+    min-height: 100vh;
+}
