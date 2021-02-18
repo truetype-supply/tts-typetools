@@ -1,0 +1,12 @@
+{
+    "extends": "../../tsconfig.build.json",
+
+    "compilerOptions": {
+        "outDir": "./dist",
+        "jsx": "react",
+        "esModuleInterop": true,
+        "lib": ["ES2015", "DOM"]
+    },
+
+    "include": ["src/**/*"]
+}
