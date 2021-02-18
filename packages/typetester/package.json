@@ -1,6 +1,6 @@
 {
     "name": "@pulipola/typetester",
-    "version": "0.0.0",
+    "version": "0.0.1",
     "description": "Typetester",
     "keywords": [
         "typetester"
@@ -28,7 +28,7 @@
         "test": "yarn run build"
     },
     "dependencies": {
-        "@pulipola/opentype": "*"
+        "@pulipola/opentype": "^0.0.1"
     },
     "peerDependencies": {
         "react": "^17.0.0"
