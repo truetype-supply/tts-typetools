@@ -1,0 +1,37 @@
+{
+    "name": "@pulipola/typetester",
+    "version": "0.0.0",
+    "description": "Typetester",
+    "keywords": [
+        "typetester"
+    ],
+    "author": "Taufik Oktama <otta@pulipola.com>",
+    "homepage": "https://typetools.pulipola.com",
+    "license": "MIT",
+    "main": "dist/index",
+    "types": "dist/index",
+    "files": [
+        "dist"
+    ],
+    "publishConfig": {
+        "access": "public"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pulipola/typetools/tree/main/packages/typetester"
+    },
+    "scripts": {
+        "build": "yarn run clean && yarn run compile",
+        "clean": "rimraf -rf ./dist",
+        "compile": "tsc -p tsconfig.build.json",
+        "prepublishOnly": "yarn run build",
+        "test": "yarn run build"
+    },
+    "peerDependencies": {
+        "react": "^17.0.0"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.2",
+        "rimraf": "^3.0.2"
+    }
+}
