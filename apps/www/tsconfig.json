@@ -4,7 +4,10 @@
         "lib": ["dom", "dom.iterable", "esnext"],
         "allowJs": true,
         "skipLibCheck": true,
-        "strict": false,
+        "strict": true,
+        "alwaysStrict": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
         "forceConsistentCasingInFileNames": true,
         "noEmit": true,
         "esModuleInterop": true,
@@ -16,7 +19,9 @@
         "baseUrl": ".",
         "paths": {
             "components/*": ["components/*"],
+            "lib/*": ["lib/*"],
             "styles/*": ["styles/*"],
+            "types/*": ["types/*"],
             "@pulipola/*": ["../../packages/*/src"]
         }
     },
