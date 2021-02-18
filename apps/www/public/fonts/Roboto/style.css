@@ -1,0 +1,14 @@
+/* @font-face {
+    font-family: "RobotoDelta Regular", sans-serif;
+    src: url("/fonts/Roboto/RobotoDelta-VF.ttf") format("truetype");
+    font-display: block;
+    font-style: normal;
+    font-weight: 100 800;
+} */
+@font-face {
+    font-family: "RobotoDelta Regular", sans-serif;
+    src: url("/fonts/Roboto/RobotoDelta-Regular.woff") format("woff");
+    font-display: block;
+    font-style: normal;
+    font-weight: normal;
+}
