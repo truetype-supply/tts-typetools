@@ -10,6 +10,10 @@
 
 * {
     box-sizing: border-box;
+    &::selection {
+        background-color: var(--geist-pp-color);
+        color: var(--accents-3);
+    }
 }
 
 body {
@@ -17,10 +21,8 @@ body {
     padding: 0;
 
     // font-family: "Helvetica Neue", sans-serif;
-    font-family: "Jet Brains Mono", monospace;
-
-    background-color: var(--aside-backround);
-    // background-color: var(--accents-3);
+    font-family: "Jet Brains Mono Regular", monospace;
+    background-color: var(--accents-3);
     color: var(--accents-14);
 
     overscroll-behavior: auto none;
