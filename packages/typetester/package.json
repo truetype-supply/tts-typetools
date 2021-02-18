@@ -27,6 +27,9 @@
         "prepublishOnly": "yarn run build",
         "test": "yarn run build"
     },
+    "dependencies": {
+        "@pulipola/opentype": "*"
+    },
     "peerDependencies": {
         "react": "^17.0.0"
     },
