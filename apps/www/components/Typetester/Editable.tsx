@@ -30,6 +30,7 @@ export const TypetesterEditable = () => {
                 fontFamily: `"${selectedFont}", sans-serif`,
             }}
         >
+            <div className="app-header">{selectedFont}</div>
             <Editable
                 html={text}
                 onChange={(e) => setText(e.target.value)}
