@@ -7,7 +7,7 @@ import React, {
     useEffect,
     useState,
 } from "react";
-import { loadFont, loadFontFace } from "@pulipola/opentype";
+import { installFont } from "./lib/installFont";
 
 export type FontGroup = "default" | "user";
 export type FontType = {
@@ -55,28 +55,8 @@ export const ProviderFont: FC<ProviderFontProps> = ({
     const [selectedFont, setSelectedFont] = useState<string>(defaultSelected);
     const [loadedFont, setLoadedFont] = useState<LoadedFont[]>([]);
 
-    const loadedFontHandler = () => {
-        Promise.all(
-            fontList.map(async ({ url, group }) => {
-                const { font, variableAxes } = await loadFont(url as string);
-                const family = font.names.fullName.en;
-                await loadFontFace(family, url as string);
-                return new Promise<LoadedFont>(async (resolve) => {
-                    resolve({
-                        name: family,
-                        font,
-                        group,
-                        variableAxes: variableAxes ? variableAxes : null,
-                    });
-                });
-            })
-        ).then((res) => {
-            setLoadedFont(res);
-        });
-    };
-
     useEffect(() => {
-        loadedFontHandler();
+        installFont(fontList).then((res) => setLoadedFont(res));
     }, [fontList]);
 
     return (
