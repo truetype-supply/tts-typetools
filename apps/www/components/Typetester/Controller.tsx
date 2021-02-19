@@ -4,7 +4,7 @@ import { useTypetester } from "@pulipola/typetester";
 import { useVariableFont } from "@pulipola/opentype";
 
 const generateBasicConfig = () => {
-    const { config, setConfig, reset } = useTypetester();
+    const { config, setConfig, reset, deafaultValue } = useTypetester();
     const objArr = Object.entries(config);
 
     return objArr.map(([key, value]) => {
@@ -17,7 +17,7 @@ const generateBasicConfig = () => {
                     min: 12,
                     max: 200,
                     step: 1,
-                    // @ts-ignore
+                    defaultValue: deafaultValue.config.fontSize,
                     onDoubleClick: () => reset(key),
                     onChange: (e: ChangeEvent<HTMLInputElement>) => {
                         setConfig((prev) => {
@@ -34,6 +34,7 @@ const generateBasicConfig = () => {
                     min: -0.25,
                     max: 1,
                     step: 0.01,
+                    defaultValue: deafaultValue.config.letterSpacing,
                     onDoubleClick: () => reset(key),
                     onChange: (e: ChangeEvent<HTMLInputElement>) => {
                         setConfig((prev) => {
@@ -50,6 +51,7 @@ const generateBasicConfig = () => {
                     min: 0,
                     max: 2,
                     step: 0.01,
+                    defaultValue: deafaultValue.config.lineHeight,
                     onDoubleClick: () => reset(key),
                     onChange: (e: ChangeEvent<HTMLInputElement>) => {
                         setConfig((prev) => {
@@ -82,7 +84,7 @@ export const TypetesterController = () => {
     return (
         <div className={styles.container}>
             <div className={styles.sticky}>
-                <header className={styles.header}>Config</header>
+                <header className="app-header">Controller</header>
                 <div className={styles.config}>
                     {rest.map(
                         (
@@ -93,13 +95,18 @@ export const TypetesterController = () => {
                                 min,
                                 max,
                                 step,
+                                defaultValue,
                                 onChange,
                                 onDoubleClick,
                             },
                             i
                         ) => {
                             return (
-                                <label key={i} className={styles.input}>
+                                <label
+                                    key={i}
+                                    data-change={defaultValue !== value}
+                                    className={styles.input}
+                                >
                                     <section className={styles.section}>
                                         <span>{label}</span>
                                         <output>{value}</output>
@@ -111,6 +118,7 @@ export const TypetesterController = () => {
                                         max={max}
                                         step={step}
                                         value={value}
+                                        data-change={defaultValue !== value}
                                         onChange={onChange}
                                         onDoubleClick={onDoubleClick}
                                     />
@@ -119,6 +127,13 @@ export const TypetesterController = () => {
                         }
                     )}
                 </div>
+
+                {axisMap && (
+                    <div className="app-header">
+                        <span>Variable Controller</span>
+                        <span>{axisMap.length}</span>
+                    </div>
+                )}
 
                 {axisMap ? (
                     <div className={styles.config}>
@@ -147,7 +162,9 @@ export const TypetesterController = () => {
                                         min={minValue}
                                         max={maxValue}
                                         value={VFConfig[tag] || defaultValue}
-                                        style={{ width: "100%", margin: 0 }}
+                                        data-change={
+                                            VFConfig[tag] !== defaultValue
+                                        }
                                         onDoubleClick={() => {
                                             setVFConfig((prev: any) => ({
                                                 ...prev,
