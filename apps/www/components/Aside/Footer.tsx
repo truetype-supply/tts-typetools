@@ -18,6 +18,7 @@ export const AsideFooter = () => {
             <span>
                 <select
                     value={theme}
+                    aria-label="Theme Selector"
                     onChange={(e) => setTheme(e.target.value)}
                 >
                     {themes.map((item, i) => (

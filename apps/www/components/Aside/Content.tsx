@@ -11,6 +11,7 @@ export const AsideContent = () => {
             <div>
                 <select
                     value={selectedFont}
+                    aria-label="Font Selector"
                     onChange={(e) => setSelectedFont(e.target.value)}
                 >
                     <optgroup label="Default">
