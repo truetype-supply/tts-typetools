@@ -7,6 +7,11 @@ export default function Page() {
         <>
             <NextHead>
                 <title>Typetools by Pulipola</title>
+                <meta
+                    name="description"
+                    // @TODO should be improve soon
+                    content="Typetools is a bla bla bla..."
+                />
             </NextHead>
 
             <main>
