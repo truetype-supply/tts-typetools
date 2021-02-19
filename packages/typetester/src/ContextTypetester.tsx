@@ -15,6 +15,18 @@ export type TypetesterConfig = {
     lineHeight: number;
 };
 
+type DefaultValue = {
+    text: string;
+    config: TypetesterConfig;
+};
+
+type ProviderTypetesterProps = {
+    default: {
+        text: string;
+        config: TypetesterConfig;
+    };
+};
+
 type TypetesterProps = {
     text: string;
     setText: Dispatch<SetStateAction<string>>;
@@ -22,23 +34,24 @@ type TypetesterProps = {
     setConfig: Dispatch<SetStateAction<TypetesterConfig>>;
     resetAll: () => void;
     reset: (key: ConfigKey) => void;
+    deafaultValue: DefaultValue;
 };
 
-type ProviderTypetesterProps = {
-    default?: {
-        text?: string;
-        config?: TypetesterConfig;
-    };
-};
+const defaultConfig = { fontSize: 48, letterSpacing: 0.0, lineHeight: 1 };
 
+// This just initial property to prevent typescript error
 const init: TypetesterProps = {
     text:
         "Shoreditch is a district in the East End of London, forming the southern part of London Borough of Hackney, with neighbouring parts of Tower Hamlets sometimes also precived as a part of the area.",
     setText: (val) => val,
-    config: { fontSize: 48, letterSpacing: 0.0, lineHeight: 1 },
+    config: defaultConfig,
     setConfig: (val) => val,
     resetAll: () => ({}),
     reset: () => ({}),
+    deafaultValue: {
+        text: "",
+        config: defaultConfig,
+    },
 };
 
 const ContextTypetester = createContext<TypetesterProps>(init);
@@ -58,45 +71,34 @@ export const ProviderTypetester: FC<ProviderTypetesterProps> = ({
     children,
     default: props,
 }) => {
-    const [text, setText] = useState(
-        props && props.text ? props.text : init.text
-    );
-    const [config, setConfig] = useState<TypetesterConfig>(
-        props && props.config ? props.config : init.config
-    );
+    const [text, setText] = useState(props.text);
+    const [config, setConfig] = useState<TypetesterConfig>(props.config);
 
     const resetAll = () =>
         setConfig(props && props.config ? props.config : init.config);
 
     const reset = (key: ConfigKey) => {
-        const hasProps = props && props.config;
-        const initValue = hasProps || init.config;
         // Check if config value same as initial config value
-        if (initValue[key] === config[key]) return;
+        if (props.config[key] === config[key]) return;
+        const { fontSize, letterSpacing, lineHeight } = props.config;
         switch (key) {
             case "fontSize":
                 setConfig((prev) => {
-                    prev.fontSize = hasProps
-                        ? (props?.config?.fontSize as number)
-                        : (init.config.fontSize as number);
+                    prev.fontSize = fontSize;
                     return { ...prev };
                 });
                 break;
 
             case "letterSpacing":
                 setConfig((prev) => {
-                    prev.letterSpacing = hasProps
-                        ? (props?.config?.letterSpacing as number)
-                        : (init.config.letterSpacing as number);
+                    prev.letterSpacing = letterSpacing;
                     return { ...prev };
                 });
                 break;
 
             case "lineHeight":
                 setConfig((prev) => {
-                    prev.lineHeight = hasProps
-                        ? (props?.config?.lineHeight as number)
-                        : (init.config.lineHeight as number);
+                    prev.lineHeight = lineHeight;
                     return { ...prev };
                 });
                 break;
@@ -110,7 +112,15 @@ export const ProviderTypetester: FC<ProviderTypetesterProps> = ({
 
     return (
         <ContextTypetester.Provider
-            value={{ text, setText, config, setConfig, resetAll, reset }}
+            value={{
+                text,
+                setText,
+                config,
+                setConfig,
+                resetAll,
+                reset,
+                deafaultValue: props,
+            }}
         >
             {children}
         </ContextTypetester.Provider>
