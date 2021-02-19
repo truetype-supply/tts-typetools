@@ -1,0 +1,30 @@
+@import "styles/media.scss";
+
+.container {
+    background-color: var(--aside-background);
+    @include media("screen", ">tablet") {
+        width: var(--aside-width);
+        border-right: 1px solid var(--accents-4);
+        min-height: 100vh;
+    }
+}
+
+.sticky {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include media("screen", ">tablet") {
+        height: 100vh;
+    }
+}
+
+.content {
+    @include media("screen", ">tablet") {
+        height: calc(100vh - var(--header-height) - var(--footer-height));
+    }
+    border-bottom: 1px solid var(--accents-4);
+    padding: 1rem;
+}

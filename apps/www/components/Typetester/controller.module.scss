@@ -9,21 +9,17 @@
 .sticky {
     position: sticky;
     top: 0;
-
-    .header {
-        padding: 1rem;
-        border-bottom: 1px solid var(--accents-4);
-    }
+    margin-bottom: -1px;
 
     .config {
         padding: 1rem;
+        border-bottom: 1px solid var(--accents-4);
 
         .input {
             font-size: var(--text-small);
-            color: var(--accents-8);
+            color: var(--accents-6);
 
             &[data-change="true"] {
-                // color: var(--geist-pp-color);
                 color: var(--accents-12);
             }
 
@@ -47,9 +43,10 @@
                     transition: 300ms ease;
                 }
 
-                &:active,
-                &:focus,
-                &:hover {
+                // &:active,
+                // &:focus,
+                &:hover,
+                &[data-change="true"] {
                     outline: none;
                     &::-webkit-slider-runnable-track,
                     &::-webkit-slider-thumb {

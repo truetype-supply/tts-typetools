@@ -14,7 +14,7 @@ export const AsideFooter = () => {
                 fontSize: "var(--text-small)",
             }}
         >
-            <span>{packageJson.version}</span>
+            <span>V.{packageJson.version}</span>
             <span>
                 <select
                     value={theme}

@@ -16,11 +16,10 @@ const TypetesterContent = () => {
 
 export const Typetester = () => {
     const { selectedFont, loadedFont } = useFont();
-    // const text =
-    //     "Shoreditch is a district in the East End of London, forming the southern part of London Borough of Hackney, with neighbouring parts of Tower Hamlets sometimes also precived as a part of the area.";
-    const text = "Shoreditch is a district in the East End of London.";
+    const text =
+        "Shoreditch is a district in the East End of London, forming the southern part of London Borough of Hackney, with neighbouring parts of Tower Hamlets sometimes also precived as a part of the area.";
 
-    const initSize = text.length >= 100 ? 24 : 100;
+    const initSize = text.length >= 100 ? 48 : 100;
     return (
         <>
             <ProviderTypetester
@@ -29,7 +28,7 @@ export const Typetester = () => {
                     config: {
                         fontSize: initSize,
                         letterSpacing: 0,
-                        lineHeight: 1.3,
+                        lineHeight: 1,
                     },
                 }}
             >

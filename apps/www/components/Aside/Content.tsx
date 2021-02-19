@@ -1,16 +1,11 @@
+import styles from "./aside.module.scss";
 import { useFont } from "@pulipola/typetester";
 import { InputFont } from "components/InputFont";
 
 export const AsideContent = () => {
     const { fontList, selectedFont, setSelectedFont } = useFont();
     return (
-        <div
-            style={{
-                height: "100%",
-                borderBottom: "1px solid var(--accents-4)",
-                padding: "1rem",
-            }}
-        >
+        <div className={styles.content}>
             <InputFont />
 
             <div>
