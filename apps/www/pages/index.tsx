@@ -35,7 +35,7 @@ export default function Page() {
                             backgroundColor: "var(--accents-3)",
                         }}
                     >
-                        Glyph Display
+                        Glyph Display Helo
                     </div>
                 </Grid>
             </main>
