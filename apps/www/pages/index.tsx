@@ -21,7 +21,6 @@ export default function Page() {
                 }}
             >
                 <Typetester />
-                {/* <Glyph /> */}
                 <div style={{ height: "100vh" }} />
             </main>
         </>
