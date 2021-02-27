@@ -1,18 +1,23 @@
+import styles from "./layout.module.scss";
 import { CSSProperties, FC } from "react";
 
 type GridProps = {
     style?: CSSProperties;
+    className?: string;
+    section: string;
 };
 
-export const Grid: FC<GridProps> = ({ children, style }) => {
+export const Grid: FC<GridProps> = ({
+    children,
+    style,
+    className,
+    section,
+}) => {
     return (
         <section
-            style={{
-                display: "grid",
-                gridTemplateColumns: "max-content 1fr",
-                gap: "var(--grid-gap)",
-                ...style,
-            }}
+            className={`${className} ${styles.grid}`}
+            data-section={section}
+            style={{ ...style }}
         >
             {children}
         </section>
