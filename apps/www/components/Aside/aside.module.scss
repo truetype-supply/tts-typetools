@@ -4,7 +4,7 @@
     background-color: var(--aside-background);
     @include media("screen", ">tablet") {
         width: var(--aside-width);
-        border-right: 1px solid var(--accents-4);
+        border-right: 1px solid var(--accents-3);
         min-height: 100vh;
     }
 }
@@ -23,8 +23,9 @@
 
 .content {
     @include media("screen", ">tablet") {
+        overflow: scroll;
         height: calc(100vh - var(--header-height) - var(--footer-height));
     }
-    border-bottom: 1px solid var(--accents-4);
-    padding: 1rem;
+    border-bottom: 1px solid var(--accents-3);
+    padding: 1rem 0;
 }

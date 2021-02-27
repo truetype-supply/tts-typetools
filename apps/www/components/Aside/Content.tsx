@@ -1,30 +1,18 @@
 import styles from "./aside.module.scss";
-import { useFont } from "@pulipola/typetester";
-import { InputFont } from "components/InputFont";
+import { InputFont } from "components/FontInput";
+import { useTypetools } from "typetools";
+import { FontData } from "./FontData";
+import { ProjectInfo } from "./ProjectInfo";
+import { FontSelector } from "components/FontSelector";
 
 export const AsideContent = () => {
-    const { fontList, selectedFont, setSelectedFont } = useFont();
+    const { font } = useTypetools();
     return (
         <div className={styles.content}>
+            <FontSelector />
             <InputFont />
-
-            <div>
-                <select
-                    value={selectedFont}
-                    aria-label="Font Selector"
-                    onChange={(e) => setSelectedFont(e.target.value)}
-                >
-                    <optgroup label="Default">
-                        {fontList
-                            .filter(({ group }) => group === "default")
-                            .map(({ name }, key) => (
-                                <option key={key} value={name}>
-                                    {name}
-                                </option>
-                            ))}
-                    </optgroup>
-                </select>
-            </div>
+            <ProjectInfo />
+            <FontData font={font} />
         </div>
     );
 };
