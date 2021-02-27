@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-Light.woff")
+        format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-Regular.woff")
+        format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-Meduim.woff")
+        format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-DemiBold.woff")
+        format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-Bold.woff")
+        format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-ExtraBold.woff")
+        format("woff");
+    font-weight: 800;
+    font-style: normal;
+    font-display: block;
+}
+@font-face {
+    font-family: "Netica", sans-serif;
+    src: url("https://console.pulipola.com/fonts/netica/Netica-Black.woff")
+        format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-display: block;
+}

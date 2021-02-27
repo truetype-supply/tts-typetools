@@ -7,16 +7,15 @@ $SHADOW_BUTTON: 0rem 0.35rem 0.5rem -0.6rem;
 
     --grid-gap: 0.25rem;
 
-    --font-netica: "Netica", sans-serif;
+    --font-sans: "Netica", sans-serif;
+    // --font-sans: "IBM Plex Sans Var Regular", sans-serif;
     --font-monospace: "JetBrains Mono", monospace;
-    // --text-small: 0.75rem;
     --text-small: 12px;
     --text-normal: 1rem;
 
     --trans-bezier: 300ms cubic-bezier(1, 0, 0, 1);
 
     --geist-padding: 0rem 6rem;
-    // --HEADER-HEIGHT: 50vh;
     --A1: #ffffff;
     --A2: #eeeeee;
     --A3: #dddddd;
@@ -54,7 +53,7 @@ $SHADOW_BUTTON: 0rem 0.35rem 0.5rem -0.6rem;
     --accents-16: var(--A16);
 
     --blur-bg: rgb(225 225 225 / 27.5%);
-    --aside-width: 18rem;
+    --aside-width: 20rem;
     --aside-shadow: inset -0.5rem 0 1rem -1rem var(--accents-10);
     --aside-backround: var(--accents-3);
     --shadow-sticky: 0 0.5rem 1rem -1rem var(--A10);
