@@ -1,12 +1,12 @@
 @import "styles/media.scss";
 
 .container {
+    position: relative;
+    width: 100%;
+    background-color: var(--accents-1);
     @include media("screen", ">tablet") {
-        width: calc(var(--aside-width) * 1);
-        background-color: var(--accents-3);
-        border-right: 1px solid var(--accents-4);
-        border-bottom: 1px solid var(--accents-4);
-        border-left: 1px solid var(--accents-4);
+        border-bottom: 1px solid var(--accents-3);
+        border-left: 1px solid var(--accents-3);
     }
 }
 
