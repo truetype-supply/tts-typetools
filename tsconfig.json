@@ -4,7 +4,8 @@
     "compilerOptions": {
         "baseUrl": ".",
         "paths": {
-            "@pulipola/*": ["packages/*/src"]
+            "@pulipola/*": ["packages/*/src"],
+            "typetools": ["packages/typetools/src"]
         },
         "jsx": "react",
         "esModuleInterop": true,
