@@ -1,0 +1,41 @@
+{
+    "name": "typetools",
+    "version": "0.0.0",
+    "description": "Typetools",
+    "keywords": [
+        "typetools"
+    ],
+    "author": "ottta <oktamataufik@gmail.com>",
+    "homepage": "https://github.com/pulipola/pulipola-typetools#readme",
+    "license": "MIT",
+    "main": "dist/index",
+    "types": "dist/index",
+    "files": [
+        "dist"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pulipola/pulipola-typetools.git"
+    },
+    "scripts": {
+        "build": "yarn run clean && yarn run compile",
+        "clean": "rimraf -rf ./dist",
+        "compile": "tsc -p tsconfig.build.json",
+        "prepublishOnly": "yarn run build",
+        "test": "yarn run build"
+    },
+    "bugs": {
+        "url": "https://github.com/pulipola/pulipola-typetools/issues"
+    },
+    "dependencies": {
+        "opentype.js": "^1.3.3",
+        "react": "^17.0.1",
+        "react-dom": "^17.0.1"
+    },
+    "devDependencies": {
+        "@types/opentype.js": "^1.3.1",
+        "@types/react": "^17.0.2",
+        "@types/react-dom": "^17.0.1",
+        "rimraf": "^3.0.2"
+    }
+}
