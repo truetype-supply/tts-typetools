@@ -14,6 +14,7 @@ export interface Glyph {
 export const useGlyph = () => {
     const { font } = useTypetools();
     const [glyphs, setGlyphs] = useState<Glyph[]>([]);
+    // @ts-ignore
     const [glyphSVG, setGlyphsSVG] = useState<Array<string>>([]);
 
     // useEffect(() => {
