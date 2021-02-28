@@ -4,5 +4,6 @@ dist
 .etc
 
 yarn.lock
+yarn-error.log
 .DS_Store
 lerna-debug.log

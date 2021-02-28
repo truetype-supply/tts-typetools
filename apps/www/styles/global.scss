@@ -38,6 +38,7 @@ body {
     // background-color: #f5eddd; // Sephia
     color: var(--accents-16);
     overscroll-behavior: none;
+    // font-feature-settings: "ss02";
 }
 
 a {
@@ -116,4 +117,8 @@ table {
     align-items: center;
     justify-content: space-between;
     white-space: nowrap;
+}
+
+.ngentit {
+    font-feature-settings: var(--feature);
 }
