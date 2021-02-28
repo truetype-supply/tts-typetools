@@ -1,6 +1,7 @@
 node_modules
 dist
 .next
+.etc
 
 yarn.lock
 .DS_Store
