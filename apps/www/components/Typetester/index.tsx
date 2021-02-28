@@ -1,44 +1,66 @@
-import { ProviderTypetester } from "@pulipola/typetester";
-import { ProviderVariable } from "@pulipola/opentype";
-import { useFont } from "@pulipola/typetester";
+import editStyle from "./editable.module.scss";
+import Editable from "react-contenteditable";
+import { useTypetester, useVariable, useTypetools } from "typetools";
 import { Grid } from "components/Layouts";
 import { TypetesterController } from "./Controller";
-import { TypetesterEditable } from "./Editable";
-
-const TypetesterContent = () => {
-    return (
-        <Grid style={{ minHeight: "75vh" }}>
-            <TypetesterController />
-            <TypetesterEditable />
-        </Grid>
-    );
-};
 
 export const Typetester = () => {
-    const { selectedFont, loadedFont } = useFont();
-    const text =
-        "Shoreditch is a district in the East End of London, forming the southern part of London Borough of Hackney, with neighbouring parts of Tower Hamlets sometimes also precived as a part of the area.";
-
-    const initSize = text.length >= 100 ? 48 : 100;
+    const { font } = useTypetools();
+    const {
+        values,
+        controllers,
+        setController,
+        text,
+        setText,
+    } = useTypetester();
+    const { axes, setAxes, generateVariationStyle } = useVariable();
     return (
-        <>
-            <ProviderTypetester
-                default={{
-                    text,
-                    config: {
-                        fontSize: initSize,
-                        letterSpacing: 0,
-                        lineHeight: 1,
-                    },
+        <Grid section="Typetester" style={{ minHeight: "100vh" }}>
+            <TypetesterController
+                basic={controllers}
+                setBasic={setController}
+                variable={axes}
+                setVariable={setAxes}
+            />
+
+            <div
+                className={editStyle.container}
+                style={{
+                    fontFamily: `"${font?.name}", "IBM Plex Sans Var Regular", sans-serif`,
                 }}
             >
-                <ProviderVariable
-                    loadedFont={loadedFont}
-                    selectedFont={selectedFont}
+                <div
+                    className={editStyle.sticky}
+                    style={{ width: "100%", backgroundColor: "inherit" }}
                 >
-                    <TypetesterContent />
-                </ProviderVariable>
-            </ProviderTypetester>
-        </>
+                    <header
+                        className="app-header"
+                        style={{
+                            position: "sticky",
+                            top: 0,
+                            // backgroundColor: "var(--accents-3)",
+                            backgroundColor: "inherit",
+                            zIndex: 10,
+                            display: "flex",
+                            alignItems: "center",
+                        }}
+                    >
+                        <span>{font ? font.name : "Loading..."}</span>
+                    </header>
+                    <Editable
+                        html={text}
+                        onChange={(e) => setText(e.target.value)}
+                        style={{
+                            outline: "none",
+                            padding: "1rem",
+                            fontSize: `${values.fontSize}px`,
+                            letterSpacing: `${values.letterSpacing}em`,
+                            lineHeight: `${values.lineHeight}em`,
+                            ...generateVariationStyle(),
+                        }}
+                    />
+                </div>
+            </div>
+        </Grid>
     );
 };

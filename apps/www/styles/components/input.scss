@@ -1,0 +1,143 @@
+#__pp-slider {
+    font-size: var(--text-small);
+    font-family: var(--font-monospace);
+    margin-bottom: calc(var(--grid-gap) * 2);
+    display: flex;
+    flex-direction: column;
+    gap: var(--grid-gap);
+
+    // & > label {
+    //     // margin-bottom: var(--grid-gap);
+    //     background-color: magenta;
+    // }
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type="number"] {
+        text-align: right;
+        // width: 2rem;
+        font-family: inherit;
+        font-size: inherit;
+        border: none;
+        // border-bottom: 1px solid !important;
+        outline: none;
+        font-variant-numeric: tabular-nums;
+
+        // &:active,
+        // &:focus {
+        //     border-bottom: 1px solid currentColor !important;
+        // }
+    }
+
+    input[type="range"] {
+        // background-color: cyan !important;
+        &[data-range="typetester-controller"] {
+            outline: none;
+
+            // $track-w: 15.5rem;
+            $track-w: 100%;
+            $track-h: 0.2rem;
+            $thumb-d: 1rem;
+            $track-c: var(--accents-3);
+            $filll-c: var(--geist-pp-color);
+
+            --range: calc(var(--range-max) - var(--range-min));
+            --ratio: calc((var(--range-val) - var(--range-min)) / var(--range));
+            --sx: calc(0.5 *#{$thumb-d} + var(--ratio) * (100% - #{$thumb-d}));
+
+            @mixin track($fill: 0) {
+                box-sizing: border-box;
+                border: none;
+                width: $track-w;
+                height: $track-h;
+                background: $track-c;
+                border-radius: 0.5rem;
+                cursor: pointer;
+
+                @if $fill == 1 {
+                    .js & {
+                        background: linear-gradient($filll-c, $filll-c) 0 / var(--sx) 100% no-repeat $track-c;
+                        &:hover,
+                        &:active,
+                        &:focus {
+                            background: linear-gradient($filll-c, $filll-c)
+                                0 /
+                                var(--sx)
+                                100%
+                                no-repeat
+                                var(--accents-6);
+                        }
+                    }
+                }
+            }
+
+            @mixin fill() {
+                height: $track-h;
+                background: $filll-c;
+            }
+
+            @mixin thumb() {
+                box-sizing: border-box;
+                border: none;
+                width: $thumb-d;
+                height: $thumb-d;
+                border-radius: 50%;
+                background: var(--geist-pp-color);
+                cursor: pointer;
+            }
+
+            &,
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none;
+            }
+
+            // --range: calc(var(--range-max) - var(--range-min));
+            // --ratio: calc((var(--range-val) - var(--range-min)) / var(--range));
+            // --sx: calc(0.5 *#{$thumb-d} + var(--ratio) * (100% - #{$thumb-d}));
+
+            margin: 0;
+            padding: 0;
+            width: $track-w;
+            height: $thumb-d;
+            background: transparent;
+            font: 1em/1 arial, sans-serif;
+
+            &::-webkit-slider-runnable-track {
+                @include track(1);
+            }
+            &::-moz-range-track {
+                @include track;
+            }
+            &::-ms-track {
+                @include track;
+            }
+
+            &::-moz-range-progress {
+                @include fill;
+            }
+            &::-ms-fill-lower {
+                @include fill;
+            }
+
+            &::-webkit-slider-thumb {
+                margin-top: 0.5 * ($track-h - $thumb-d);
+                @include thumb;
+            }
+            &::-moz-range-thumb {
+                @include thumb;
+            }
+            &::-ms-thumb {
+                margin-top: 0;
+                @include thumb;
+            }
+
+            &::-ms-tooltip {
+                display: none;
+            }
+        }
+    }
+}

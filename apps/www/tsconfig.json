@@ -22,9 +22,10 @@
             "lib/*": ["lib/*"],
             "styles/*": ["styles/*"],
             "types/*": ["types/*"],
-            "@pulipola/*": ["../../packages/*/src"]
+            "@pulipola/*": ["../../packages/*/src"],
+            "typetools": ["../../packages/typetools/src"]
         }
     },
-    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+    "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "lib/gtag.js"],
     "exclude": ["node_modules"]
 }

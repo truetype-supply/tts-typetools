@@ -1,9 +1,13 @@
+@import "styles/media.scss";
+
 .container {
-    width: var(--aside-width);
-    background-color: var(--accents-3);
-    border-right: 1px solid var(--accents-4);
-    border-bottom: 1px solid var(--accents-4);
-    border-left: 1px solid var(--accents-4);
+    @include media("screen", ">tablet") {
+        width: calc(var(--aside-width) * 1);
+        background-color: var(--accents-3);
+        border-right: 1px solid var(--accents-4);
+        border-bottom: 1px solid var(--accents-4);
+        border-left: 1px solid var(--accents-4);
+    }
 }
 
 .sticky {
@@ -17,6 +21,7 @@
 
         .input {
             font-size: var(--text-small);
+            font-family: var(--font-monospace);
             color: var(--accents-6);
 
             &[data-change="true"] {
@@ -27,6 +32,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                // font-variant-numeric: diagonal-fractions;
 
                 output {
                     font-variant-numeric: tabular-nums;
@@ -34,6 +40,7 @@
             }
 
             input[type="range"] {
+                outline: none;
                 width: 100%;
                 margin: 9.5px 0;
                 background-color: transparent;
@@ -50,8 +57,8 @@
                     outline: none;
                     &::-webkit-slider-runnable-track,
                     &::-webkit-slider-thumb {
-                        background-color: var(--accents-8);
-                        border-color: var(--accents-8);
+                        background-color: var(--geist-pp-color);
+                        border-color: var(--geist-pp-color);
                     }
                 }
 
