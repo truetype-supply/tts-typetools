@@ -1,5 +1,6 @@
 import NextHead from "next/head";
 import { Typetester } from "components/Typetester";
+import { Glyph } from "components/Glyph";
 
 export default function Page() {
     return (
@@ -21,7 +22,7 @@ export default function Page() {
                 }}
             >
                 <Typetester />
-                <div style={{ height: "100vh" }} />
+                <Glyph />
             </main>
         </>
     );
