@@ -1,6 +1,6 @@
 import styles from "./controller.module.scss";
 import { CSSProperties, useMemo } from "react";
-import { Controller, ControllerTag, Axes } from "typetools";
+import { Controller, ControllerTag, Axes } from "@pulipola/typetools";
 import { Slider } from "components/Utils/Slider";
 // import { event } from "lib/gtag";
 interface TypetesterControllerProps {

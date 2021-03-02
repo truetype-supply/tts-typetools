@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { ProviderTypetools } from "typetools";
+import { ProviderTypetools } from "@pulipola/typetools";
 import { ProviderTheme } from "@pulipola/ui";
 
 const defaultFonts = [

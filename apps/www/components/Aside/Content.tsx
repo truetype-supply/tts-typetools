@@ -1,6 +1,6 @@
 import styles from "./aside.module.scss";
+import { useTypetools } from "@pulipola/typetools";
 import { InputFont } from "components/FontInput";
-import { useTypetools } from "typetools";
 import { FontData } from "./FontData";
 import { ProjectInfo } from "./ProjectInfo";
 import { FontSelector } from "components/FontSelector";
