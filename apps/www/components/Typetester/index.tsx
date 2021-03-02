@@ -1,6 +1,6 @@
 import editStyle from "./editable.module.scss";
 import Editable from "react-contenteditable";
-import { useTypetester, useVariable, useTypetools } from "typetools";
+import { useTypetester, useVariable, useTypetools } from "@pulipola/typetools";
 import { Grid } from "components/Layouts";
 import { TypetesterController } from "./Controller";
 

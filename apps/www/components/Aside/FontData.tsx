@@ -1,4 +1,4 @@
-import { Font } from "typetools";
+import { Font } from "@pulipola/typetools";
 import { TreeView } from "components/TreeView";
 
 type FontDataProps = {

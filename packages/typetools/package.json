@@ -1,21 +1,24 @@
 {
-    "name": "typetools",
+    "name": "@pulipola/typetools",
     "version": "0.0.2",
     "description": "Typetools",
     "keywords": [
         "typetools"
     ],
-    "author": "ottta <oktamataufik@gmail.com>",
-    "homepage": "https://github.com/pulipola/pulipola-typetools#readme",
+    "author": "Taufik Oktama <oktamataufik@gmail.com>",
+    "homepage": "https://github.com/pulipola/pulipola-typetools/blob/main/packages/typetools/README.md",
     "license": "MIT",
     "main": "dist/index",
     "types": "dist/index",
     "files": [
         "dist"
     ],
+    "publishConfig": {
+        "access": "public"
+    },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/pulipola/pulipola-typetools.git"
+        "url": "git+https://github.com/pulipola/pulipola-typetools/tree/main/packages/typetools"
     },
     "scripts": {
         "build": "yarn run clean && yarn run compile",

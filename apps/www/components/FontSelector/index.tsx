@@ -1,6 +1,6 @@
 import { CSSProperties, useRef } from "react";
 import { useOnClickOutside } from "@pulipola/hook";
-import { useTypetools } from "typetools";
+import { useTypetools } from "@pulipola/typetools";
 import { useToggle } from "lib/hooks/useToggle";
 
 export const FontSelector = () => {

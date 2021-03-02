@@ -1,6 +1,6 @@
 import styles from "./input.module.scss";
 import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import { useTypetools } from "typetools";
+import { useTypetools } from "@pulipola/typetools";
 
 export const InputFont = () => {
     const refInput = useRef<HTMLInputElement>(null);
