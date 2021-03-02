@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { useGlyph, useTypetools, useVariable } from "typetools";
+import { useGlyph, useTypetools, useVariable } from "@pulipola/typetools";
 import { Grid } from "components/Layouts";
 import { TypetesterController } from "components/Typetester/Controller";
 
