@@ -1,6 +1,6 @@
 {
     "name": "pulipola-typetools",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Typetools",
     "author": "Taufik Oktama",
     "license": "MIT",
@@ -19,7 +19,7 @@
         "@pulipola/hook": "^1.0.0-alpha.1",
         "@pulipola/opentype": "^0.0.1",
         "@pulipola/typetester": "^0.0.2",
-        "@pulipola/typetools": "*",
+        "@pulipola/typetools": "^0.0.3",
         "@pulipola/ui": "^1.0.0-alpha.0",
         "next": "^10.0.7",
         "opentype.js": "^1.3.3",
