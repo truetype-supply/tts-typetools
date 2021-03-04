@@ -1,9 +1,10 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of content**
 
--   [Typetools](#typetools)
+- [Typetools](#typetools)
+  - [A react.js component, context, and hook for parse opentype font.](#a-reactjs-component-context-and-hook-for-parse-opentype-font)
+  - [Usage](#usage)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
