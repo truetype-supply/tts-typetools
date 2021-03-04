@@ -1,8 +1,6 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "strict": true,
-        "alwaysStrict": true,
         "jsx": "react",
         "esModuleInterop": true,
         "lib": ["ES2017", "DOM"],
