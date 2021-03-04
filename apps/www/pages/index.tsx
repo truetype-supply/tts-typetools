@@ -1,6 +1,6 @@
 import NextHead from "next/head";
 import { Typetester } from "components/Typetester";
-import { Glyph } from "components/Glyph";
+import { Main } from "components/Layouts";
 
 export default function Page() {
     return (
@@ -13,17 +13,9 @@ export default function Page() {
                     content="Typetools is a bla bla bla..."
                 />
             </NextHead>
-
-            <main
-                style={{
-                    color: "var(--accents-16)",
-                    display: "grid",
-                    gap: "var(--grid-gap)",
-                }}
-            >
+            <Main>
                 <Typetester />
-                <Glyph />
-            </main>
+            </Main>
         </>
     );
 }
