@@ -1,19 +1,38 @@
-import type { Axes } from "../types";
-import { useCallback, useEffect, useState } from "react";
-import { useFont } from "../Typetools";
+import type { Axes, Font } from "./types";
+import type { Dispatch, FC, SetStateAction } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
-export const useVariable = () => {
-    const { font } = useFont();
+type AxesControl = {
+    [tag: string]: number;
+};
+
+interface ContextVariableProps {
+    axes: Axes[] | null;
+    axesControl: AxesControl | null;
+    setAxesControl: Dispatch<SetStateAction<AxesControl | null>>;
+    generateVariationStyle: () => {
+        fontVariationSettings: string;
+    };
+    setAxes: (tag: string, val: number) => void;
+}
+
+const ContextVariable = createContext<ContextVariableProps>({
+    axes: null,
+    axesControl: null,
+    setAxesControl: (val) => val,
+    generateVariationStyle: () => ({ fontVariationSettings: "" }),
+    setAxes: () => ({}),
+});
+export const useVariable = () => useContext(ContextVariable);
+
+export const ProviderVariable: FC<{ font: Font | null }> = ({
+    children,
+    font,
+}) => {
     const [axes, setInitAxes] = useState<Axes[] | null>(null);
     const [axesControl, setAxesControl] = useState<{
         [tag: string]: number;
     } | null>(null);
-
-    const generateStyle = useCallback(() => {
-        if (!axesControl) return { fontVariationSettings: "" };
-        const varStyle = JSON.stringify(axesControl).replace(/[{}:]/g, " ");
-        return { fontVariationSettings: varStyle };
-    }, [axesControl]);
 
     const generateVariationStyle = () => {
         if (!axes) return { fontVariationSettings: "" };
@@ -22,15 +41,12 @@ export const useVariable = () => {
         return { fontVariationSettings: varStyle };
     };
 
-    const VFStyle = generateStyle();
-
     const setAxes = (tag: string, v: number) => {
         if (!axes) return;
         if (axes.length === 0) return;
         setInitAxes((prev) => {
             const selected = prev?.find((item) => item.tag === tag) as Axes;
             selected.value = v;
-            // @ts-ignore
             return [...prev];
         });
     };
@@ -39,7 +55,6 @@ export const useVariable = () => {
         if (!font) return;
         const hasAxes = font.variable.axes;
         // const hasInstance = font.variable.instances;
-        // console.log(hasAxes);
         if (!hasAxes) {
             setInitAxes(null);
             setAxesControl(null);
@@ -59,12 +74,17 @@ export const useVariable = () => {
         }
     }, [font]);
 
-    return {
-        axes,
-        axesControl,
-        VFStyle,
-        setAxesControl,
-        setAxes,
-        generateVariationStyle,
-    };
+    return (
+        <ContextVariable.Provider
+            value={{
+                axes,
+                axesControl,
+                setAxesControl,
+                setAxes,
+                generateVariationStyle,
+            }}
+        >
+            {children}
+        </ContextVariable.Provider>
+    );
 };
