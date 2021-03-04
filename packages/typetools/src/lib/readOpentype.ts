@@ -1,4 +1,4 @@
-import type { Axes } from "../index";
+import type { Axes } from "../types";
 import { load } from "opentype.js";
 import VariableFont from "./readVariable";
 
