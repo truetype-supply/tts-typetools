@@ -33,60 +33,59 @@
     }
 
     input[type="range"] {
-        // background-color: cyan !important;
         &[data-range="typetester-controller"] {
-            outline: none;
-
-            // $track-w: 15.5rem;
-            $track-w: 100%;
-            $track-h: 0.2rem;
-            $thumb-d: 1rem;
-            $track-c: var(--accents-3);
-            $filll-c: var(--geist-pp-color);
+            --track-w: 100%;
+            --track-h: 0.1rem;
+            --thumb-d: 1rem;
+            --track-c: var(--accents-4);
+            --filll-c: var(--geist-pp-color);
 
             --range: calc(var(--range-max) - var(--range-min));
             --ratio: calc((var(--range-val) - var(--range-min)) / var(--range));
-            --sx: calc(0.5 *#{$thumb-d} + var(--ratio) * (100% - #{$thumb-d}));
+            --sx: calc(0.5 * var(--thumb-d) + var(--ratio) * (100% - var(--thumb-d)));
+
+            outline: none;
+            cursor: pointer;
+            &:disabled {
+                cursor: not-allowed;
+                --track-c: var(--accents-3);
+                --filll-c: var(--accents-4);
+            }
 
             @mixin track($fill: 0) {
                 box-sizing: border-box;
                 border: none;
-                width: $track-w;
-                height: $track-h;
-                background: $track-c;
+                width: var(--track-w);
+                height: var(--track-h);
+                background: var(--track-c);
                 border-radius: 0.5rem;
-                cursor: pointer;
 
                 @if $fill == 1 {
                     & {
-                        background: linear-gradient($filll-c, $filll-c) 0 / var(--sx) 100% no-repeat $track-c;
-                        &:hover,
-                        &:active,
-                        &:focus {
-                            background: linear-gradient($filll-c, $filll-c)
-                                0 /
-                                var(--sx)
-                                100%
-                                no-repeat
-                                var(--accents-6);
-                        }
+                        background: linear-gradient(var(--filll-c), var(--filll-c))
+                            0 /
+                            var(--sx)
+                            100%
+                            no-repeat
+                            var(--track-c);
                     }
                 }
             }
 
             @mixin fill() {
-                height: $track-h;
-                background: $filll-c;
+                height: var(--track-h);
+                background: var(--filll-c);
             }
 
             @mixin thumb() {
                 box-sizing: border-box;
                 border: none;
-                width: $thumb-d;
-                height: $thumb-d;
-                border-radius: 50%;
-                background: var(--geist-pp-color);
-                cursor: pointer;
+                width: calc(var(--thumb-d) * 2);
+                height: var(--thumb-d);
+                // border-radius: 50%;
+                border-radius: 2rem;
+                background: var(--filll-c);
+                cursor: inherit;
             }
 
             &,
@@ -94,14 +93,10 @@
                 -webkit-appearance: none;
             }
 
-            // --range: calc(var(--range-max) - var(--range-min));
-            // --ratio: calc((var(--range-val) - var(--range-min)) / var(--range));
-            // --sx: calc(0.5 *#{$thumb-d} + var(--ratio) * (100% - #{$thumb-d}));
-
             margin: 0;
             padding: 0;
-            width: $track-w;
-            height: $thumb-d;
+            width: var(--track-w);
+            height: var(--thumb-d);
             background: transparent;
             font: 1em/1 arial, sans-serif;
 
@@ -114,7 +109,6 @@
             &::-ms-track {
                 @include track;
             }
-
             &::-moz-range-progress {
                 @include fill;
             }
@@ -123,7 +117,7 @@
             }
 
             &::-webkit-slider-thumb {
-                margin-top: 0.5 * ($track-h - $thumb-d);
+                margin-top: calc(0.5 * calc((var(--track-h) - var(--thumb-d))));
                 @include thumb;
             }
             &::-moz-range-thumb {

@@ -14,6 +14,7 @@ interface SliderProps {
     onDoubleClick: (v: number) => void;
     style?: CSSProperties;
     className?: string;
+    disable?: boolean;
 }
 
 export const Slider = (props: SliderProps) => {
@@ -28,6 +29,7 @@ export const Slider = (props: SliderProps) => {
         onChange,
         onDoubleClick,
         className,
+        disable,
     } = props;
 
     return (
@@ -41,15 +43,17 @@ export const Slider = (props: SliderProps) => {
                 // htmlFor={`input-number-${name}`}
                 data-change={value !== defaultValue}
                 style={{
-                    display: "flex",
+                    display: "grid",
+                    gridTemplateColumns: "3fr 1fr",
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    // justifyContent: "space-between",
                 }}
             >
-                <span>{name}</span>
-                <span>
-                    {tag && <span>'{tag}'</span>}
-
+                <div>
+                    <span style={{ textTransform: "capitalize" }}>{name} </span>{" "}
+                    {tag && <span>{` / (${tag})`}</span>}
+                </div>
+                <div>
                     <input
                         id={`input-number-${name}`}
                         type="number"
@@ -58,9 +62,14 @@ export const Slider = (props: SliderProps) => {
                         step={step}
                         value={value}
                         onChange={(e) => onChange(e.target.valueAsNumber)}
-                        style={{ background: "none", color: "currentcolor" }}
+                        style={{
+                            background: "none",
+                            color: "currentcolor",
+                            width: "100%",
+                        }}
+                        disabled={disable}
                     />
-                </span>
+                </div>
             </label>
 
             <label
@@ -91,10 +100,11 @@ export const Slider = (props: SliderProps) => {
                     }}
                     onDoubleClick={() => onDoubleClick(defaultValue)}
                     onChange={(e) => onChange(e.target.valueAsNumber)}
+                    disabled={disable}
                 />
                 <button
                     onClick={() => onChange(defaultValue)}
-                    disabled={value === defaultValue}
+                    disabled={value === defaultValue || disable}
                     className={styles.reset}
                     title={`Reset ${name}`}
                     style={{

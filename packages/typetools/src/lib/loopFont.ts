@@ -1,4 +1,4 @@
-import type { FontGroup, Font, FontFormat } from "../index";
+import type { FontGroup, Font, FontFormat } from "../types";
 import { installFont } from "./installFont";
 import { readOpetype } from "./readOpentype";
 

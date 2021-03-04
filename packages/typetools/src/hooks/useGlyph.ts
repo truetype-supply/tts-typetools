@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useTypetools } from "../Typetools";
+import { useFont } from "../Typetools";
 
 export interface Glyph {
     character?: string | undefined;
@@ -12,7 +12,7 @@ export interface Glyph {
 }
 
 export const useGlyph = () => {
-    const { font } = useTypetools();
+    const { font } = useFont();
     const [glyphs, setGlyphs] = useState<Glyph[]>([]);
     // @ts-ignore
     const [glyphSVG, setGlyphsSVG] = useState<Array<string>>([]);
@@ -56,8 +56,6 @@ export const useGlyph = () => {
         const openType = font.opentype;
         // @ts-ignore
         const selectedGlyph = openType.glyphs.glyphs;
-        console.log(openType);
-        // console.log(openType.charToGlyphIndex("a"));
 
         const newGlyphs = Object.values(selectedGlyph)
             // @ts-ignore

@@ -1,66 +1,71 @@
-import editStyle from "./editable.module.scss";
+import { useVariable, useTypetester, useFont } from "@pulipola/typetools";
+import { useEffect, useState } from "react";
 import Editable from "react-contenteditable";
-import { useTypetester, useVariable, useTypetools } from "@pulipola/typetools";
-import { Grid } from "components/Layouts";
-import { TypetesterController } from "./Controller";
+import { texts } from "lib/constants";
 
 export const Typetester = () => {
-    const { font } = useTypetools();
+    const { font } = useFont();
+    const { generateVariationStyle } = useVariable();
+    const { state, dispatch } = useTypetester();
     const {
-        values,
-        controllers,
-        setController,
         text,
-        setText,
-    } = useTypetester();
-    const { axes, setAxes, generateVariationStyle } = useVariable();
-    return (
-        <Grid section="Typetester" style={{ minHeight: "100vh" }}>
-            <TypetesterController
-                basic={controllers}
-                setBasic={setController}
-                variable={axes}
-                setVariable={setAxes}
-            />
+        fontSize,
+        fontLeading,
+        fontTracking,
+        fontOutline,
+        letterCase,
+        textAlign,
+    } = state;
 
-            <div
-                className={editStyle.container}
+    const [newText, setNewText] = useState(text);
+    useEffect(() => {
+        dispatch({ type: "text", payload: newText });
+    }, [newText]);
+
+    return (
+        <>
+            <header
                 style={{
-                    fontFamily: `"${font?.name}", "IBM Plex Sans Var Regular", sans-serif`,
+                    position: "sticky",
+                    top: "var(--header-height)",
+                    height: "var(--header-height)",
+                    zIndex: 10,
                 }}
             >
-                <div
-                    className={editStyle.sticky}
-                    style={{ width: "100%", backgroundColor: "inherit" }}
+                <select
+                    value={newText}
+                    onChange={(e) => setNewText(e.target.value)}
                 >
-                    <header
-                        className="app-header"
-                        style={{
-                            position: "sticky",
-                            top: 0,
-                            // backgroundColor: "var(--accents-3)",
-                            backgroundColor: "inherit",
-                            zIndex: 10,
-                            display: "flex",
-                            alignItems: "center",
-                        }}
-                    >
-                        <span>{font ? font.name : "Loading..."}</span>
-                    </header>
-                    <Editable
-                        html={text}
-                        onChange={(e) => setText(e.target.value)}
-                        style={{
-                            outline: "none",
-                            padding: "1rem",
-                            fontSize: `${values.fontSize}px`,
-                            letterSpacing: `${values.letterSpacing}em`,
-                            lineHeight: `${values.lineHeight}em`,
-                            ...generateVariationStyle(),
-                        }}
-                    />
-                </div>
+                    {texts.map(({ key, item }, i) => (
+                        <option key={i} value={item}>
+                            {key}
+                        </option>
+                    ))}
+                </select>
+            </header>
+            <div style={{ overflow: "hidden" }}>
+                <Editable
+                    html={text}
+                    onChange={(e) =>
+                        dispatch({ type: "text", payload: e.target.value })
+                    }
+                    style={{
+                        padding: "1rem",
+                        fontFamily: `${font?.name}, IBM Plex Sans Var Regular, sans-serif`,
+                        fontSize: `${fontSize}pt`,
+                        letterSpacing: `${fontTracking}em`,
+                        lineHeight: `${fontLeading}em`,
+                        textTransform: letterCase,
+                        textAlign,
+                        outline: "none",
+                        WebkitTextStroke: fontOutline ? "0.01em" : 0,
+                        WebkitTextFillColor: fontOutline
+                            ? "transparent"
+                            : "currentColor",
+                        ...generateVariationStyle(),
+                    }}
+                />
             </div>
-        </Grid>
+        </>
     );
 };

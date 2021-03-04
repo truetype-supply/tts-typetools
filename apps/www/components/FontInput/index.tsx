@@ -1,11 +1,12 @@
 import styles from "./input.module.scss";
-import { ChangeEvent, FormEvent, useRef, useState } from "react";
-import { useTypetools } from "@pulipola/typetools";
+import type { ChangeEvent, FormEvent } from "react";
+import { useRef, useState } from "react";
+import { useFont } from "@pulipola/typetools";
 
 export const InputFont = () => {
     const refInput = useRef<HTMLInputElement>(null);
     const refInputText = useRef<HTMLInputElement>(null);
-    const { addFonts } = useTypetools();
+    const { addFonts } = useFont();
 
     const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
         e.preventDefault();

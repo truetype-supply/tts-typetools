@@ -1,0 +1,23 @@
+@import "styles/media.scss";
+
+.container {
+    @include media("screen", ">tablet") {
+        position: relative;
+        width: var(--aside-width);
+        border-right: 1px solid;
+        border-left: 1px solid;
+    }
+}
+
+.sticky {
+    // padding: 1rem;
+    position: sticky;
+    top: 0;
+}
+
+.controller {
+    padding: 1rem;
+    height: calc(100vh - var(--header-height));
+    overflow: scroll;
+    scroll-behavior: smooth;
+}

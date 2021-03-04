@@ -1,11 +1,11 @@
 import { CSSProperties, useRef } from "react";
 import { useOnClickOutside } from "@pulipola/hook";
-import { useTypetools } from "@pulipola/typetools";
+import { useFont } from "@pulipola/typetools";
 import { useToggle } from "lib/hooks/useToggle";
 
 export const FontSelector = () => {
     const refParent = useRef<HTMLDivElement>(null);
-    const { fonts, font, setFont } = useTypetools();
+    const { fonts, font, setFont } = useFont();
     const { show, toggle, setShow } = useToggle();
     useOnClickOutside({ target: refParent, handler: () => setShow(false) });
 

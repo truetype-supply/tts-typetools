@@ -1,13 +1,7 @@
-import React, {
-    createContext,
-    Dispatch,
-    FC,
-    SetStateAction,
-    useContext,
-    useEffect,
-    useState,
-} from "react";
-import type { Font } from "./index";
+import type { Font } from "./types";
+import type { Dispatch, FC, SetStateAction } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { ProviderVariable } from "./Variable";
 import { loopFont } from "./lib/loopFont";
 
 interface ContextTypetoolsProps {
@@ -29,7 +23,7 @@ const init: ContextTypetoolsProps = {
 };
 
 const ContextTypetools = createContext<ContextTypetoolsProps>(init);
-export const useTypetools = () => useContext(ContextTypetools);
+export const useFont = () => useContext(ContextTypetools);
 
 const uniqueFonts = (list: Font[]) => {
     return list.reduce(
@@ -69,7 +63,7 @@ export const ProviderTypetools: FC<ProviderTypetoolsProps> = ({
 
     return (
         <ContextTypetools.Provider value={{ fonts, font, setFont, addFonts }}>
-            {children}
+            <ProviderVariable font={font}>{children}</ProviderVariable>
         </ContextTypetools.Provider>
     );
 };
