@@ -1,9 +1,10 @@
 @import "styles/media.scss";
 
 .grid {
-    @include media("screen", ">tablet") {
-        display: grid;
-        grid-template-columns: max-content 1fr;
-        gap: var(--grid-gap);
-    }
+    color: currentColor;
+    // @include media("screen", ">tablet") {
+    //     display: grid;
+    //     grid-template-columns: max-content 1fr;
+    //     gap: var(--grid-gap);
+    // }
 }
