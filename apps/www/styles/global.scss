@@ -21,6 +21,11 @@
         background-color: var(--geist-pp-color);
         color: var(--accents-1);
     }
+
+    // [data-font-outline="true"] {
+    //     -webkit-text-stroke: 0.01em;
+    //     -webkit-text-fill-color: transparent;
+    // }
 }
 
 // @media screen and (-webkit-min-device-pixel-ratio: 2), screen and (min-resolution: 2dppx) {
@@ -72,6 +77,10 @@ pre {
     }
 }
 
+svg {
+    fill: currentColor;
+}
+
 table {
     width: 100%;
     color: var(--accents-8);
@@ -103,7 +112,7 @@ table {
 #__next {
     @include media("screen", ">tablet") {
         display: grid;
-        grid-template-columns: max-content 1fr;
+        grid-template-columns: max-content max-content 1fr;
         gap: var(--grid-gap);
     }
 }
