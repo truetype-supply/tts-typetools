@@ -1,0 +1,46 @@
+.container {
+    position: sticky;
+    top: var(--header-height);
+    height: var(--header-height);
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--grid-gap);
+    padding: 0 var(--grid-gap);
+    align-items: center;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    input[type="text"] {
+        background-color: var(--accents-1);
+        border-radius: 5rem;
+        border: 1px solid;
+        height: 2rem;
+        font-family: inherit;
+        padding: 0 0.75rem;
+        outline: none;
+        color: currentColor;
+    }
+}
+
+.counter {
+    span {
+        background-color: var(--accents-1);
+        border-radius: 5rem;
+        border: 1px solid;
+        height: 2rem;
+        padding: 0.75rem;
+        display: inline-flex;
+        align-items: center;
+        float: right;
+        font-size: 14px;
+        font-variant-numeric: tabular-nums;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}

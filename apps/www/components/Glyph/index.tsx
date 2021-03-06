@@ -9,6 +9,8 @@ import { List } from "./List";
 interface ContextGlyphDisplayProps {
     search: string;
     setSearch: Dispatch<SetStateAction<string>>;
+    totalGlyphs: number;
+    searchResults: number;
 
     pagination: {
         data: GlyphType[];
@@ -24,6 +26,8 @@ interface ContextGlyphDisplayProps {
 const initialState: ContextGlyphDisplayProps = {
     search: "",
     setSearch: (val) => val,
+    totalGlyphs: 1,
+    searchResults: 0,
     pagination: {
         data: [],
         currentPage: 1,
@@ -50,21 +54,21 @@ export const Glyph = () => {
     });
 
     const {
-        currentPage,
         paginationData,
+        paginationIndicators,
+        page,
         maxPage,
-        pages,
         jump,
         next,
         prev,
-    } = usePagination(filteredGlyph, 100);
+    } = usePagination(filteredGlyph, 100, 1);
 
     useEffect(() => {
         window.scrollTo({
             top: 0,
             // behavior: "smooth"
         });
-    }, [currentPage, font]);
+    }, [page, font]);
 
     useEffect(() => {
         if (!font) return;
@@ -73,14 +77,16 @@ export const Glyph = () => {
         jump(1);
     }, [font]);
 
-    const glyphDisplayState = {
+    const glyphDisplayState: ContextGlyphDisplayProps = {
         search,
         setSearch,
+        totalGlyphs: glyphs.length,
+        searchResults: filteredGlyph.length,
         pagination: {
             data: paginationData,
-            currentPage,
+            currentPage: page,
             maxPage,
-            indicators: pages,
+            indicators: paginationIndicators,
             next,
             prev,
             jump,
