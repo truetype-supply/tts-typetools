@@ -1,15 +1,6 @@
+import type { Glyph } from "../types";
 import { useEffect, useState } from "react";
 import { useFont } from "../Typetools";
-
-export interface Glyph {
-    character?: string | undefined;
-    unicode?: string | undefined;
-    unicode_dec?: number | undefined;
-    html_code?: string | undefined;
-    glyph_id: number;
-    name: string;
-    pathh?: string;
-}
 
 export const useGlyph = () => {
     const { font } = useFont();
