@@ -1,0 +1,44 @@
+.container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pagination {
+    position: relative;
+    height: 2rem;
+    display: inline-flex;
+    align-items: center;
+    gap: var(--grid-gap);
+    list-style: none;
+    border: 1px solid;
+    border-radius: 5rem;
+    padding: 0 var(--grid-gap);
+    margin: 0;
+    background-color: var(--accents-1);
+
+    button {
+        background: none;
+        border: none;
+        height: 1.5rem;
+        width: 1.5rem;
+        color: currentColor;
+        border-radius: 100%;
+        font-family: inherit;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-variant-numeric: tabular-nums;
+        outline: none;
+        cursor: pointer;
+
+        &:disabled {
+            cursor: not-allowed;
+        }
+
+        &[data-active="true"] {
+            color: var(--geist-pp-color);
+            border: 1px solid currentColor !important;
+        }
+    }
+}

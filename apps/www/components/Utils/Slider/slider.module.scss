@@ -38,7 +38,8 @@
             --track-h: 0.1rem;
             --thumb-d: 1rem;
             --track-c: var(--accents-4);
-            --filll-c: var(--geist-pp-color);
+            --filll-c: var(--accents-6);
+            --thumb-border: 1px solid var(--accents-4) !important;
 
             --range: calc(var(--range-max) - var(--range-min));
             --ratio: calc((var(--range-val) - var(--range-min)) / var(--range));
@@ -46,10 +47,18 @@
 
             outline: none;
             cursor: pointer;
+
             &:disabled {
                 cursor: not-allowed;
                 --track-c: var(--accents-3);
                 --filll-c: var(--accents-4);
+            }
+
+            &[data-change="true"] {
+                // --track-c: var(--accents-8);
+                --thumb-border: 1px solid red !important;
+                --filll-c: var(--geist-pp-color);
+                // border: 1px solid;
             }
 
             @mixin track($fill: 0) {
@@ -83,6 +92,7 @@
                 width: calc(var(--thumb-d) * 2);
                 height: var(--thumb-d);
                 // border-radius: 50%;
+                // border: var(--thumb-border);
                 border-radius: 2rem;
                 background: var(--filll-c);
                 cursor: inherit;
