@@ -25,6 +25,8 @@ export const texts: { key: TextKey; item: string }[] = [
 export const defaultFonts = [
     "/fonts/IBMPlex/IBMPlexSansVar-Roman.ttf",
     "/fonts/IBMPlex/IBMPlexSansVar-Italic.ttf",
+    "/fonts/Inter/Inter.var.ttf",
+    "/fonts/Inter/InterDisplay.var.ttf",
     "/fonts/Cairo/CairoGX.ttf",
     "/fonts/GrenzeGotisch/GrenzeGotisch-VariableFont_wght.ttf",
 ];
