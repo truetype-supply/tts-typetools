@@ -21,7 +21,7 @@
         "@pulipola/typetester": "^0.0.2",
         "@pulipola/typetools": "^0.0.3",
         "@pulipola/ui": "^1.0.0-alpha.0",
-        "next": "^11.0.1",
+        "next": "^12.1.1",
         "opentype.js": "^1.3.3",
         "react": "^16.14.0",
         "react-contenteditable": "^3.3.5",
